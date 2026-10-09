@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using NZWalks.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +12,15 @@ builder.Services.AddOpenApi();
 // add com: "dotnet add package Swashbuckle.AspNetCore"
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add DbContext
+builder.Services.AddDbContext<NZWalksDbContext>
+    (options =>
+        options.UseSqlServer(
+            (builder.Configuration.GetConnectionString("NZWalksConnectionString")
+            )
+        )
+    );
 
 var app = builder.Build();
 

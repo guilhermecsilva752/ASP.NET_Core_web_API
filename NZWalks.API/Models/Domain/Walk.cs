@@ -2,7 +2,7 @@
 
 namespace NZWalks.API.Models.Domain
 {
-    public class Walks
+    public class Walk
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -13,7 +13,6 @@ namespace NZWalks.API.Models.Domain
         // Foreign key
         public Guid DifficultyId { get; set; }
         public Guid RegionId { get; set; }
-
 
 
         // Navigation property
